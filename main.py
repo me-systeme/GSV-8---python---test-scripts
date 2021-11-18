@@ -56,7 +56,11 @@ if __name__ == '__main__':
     print("UserScale - channel 2: ", getUserScale(Channel=2))
     setUserScale(Channel=2, UserScale=1.0)
     print("UserScale - channel 2: ", getUserScale(Channel=2))
-
+    
+    print("DataRate: ", getDataRate())
+    setDataRate(100)
+    print("DataRate: ", getDataRate())
+    
     serialConnection.close()
 
 
