@@ -21,5 +21,11 @@ def ReadUserOffset(Channel):
 def WriteUserOffset(Channel, newUserOffset):
     return b'\xAA\x95\x9B' + Channel.to_bytes(1, byteorder='big') + GSVconvert.floatTobytes(newUserOffset) + b'\x85'
 
+def ReadDataRate():
+    return b'\xAA\x90\x8A\x85'
+
+def WriteDataRate(DataRate):
+    return b'\xAA\x94\x8B' + GSVconvert.floatTobytes(DataRate) + b'\x85'
+
 def SetZero(Channel):
     return b'\xAA\x91\x0C' + Channel.to_bytes(1, byteorder='big') + b'\x85'
