@@ -3,6 +3,17 @@ import GSVconvert
 import GSVcommands
 from time import sleep
 
+def getDataRate():
+    serialConnection.write(GSVcommands.ReadDataRate())
+    AnswFrame = serialConnection.read(8)
+    DataRate = GSVconvert.bytesTofloat(AnswFrame[3:7])
+    return DataRate
+
+def setDataRate(DataRate):
+    serialConnection.write(GSVcommands.WriteDataRate(DataRate))
+    AnswFrame = serialConnection.read(4)
+    print("AnswFrame: ", AnswFrame.hex())
+
 def getUserScale(Channel):
     serialConnection.write(GSVcommands.ReadUserScale(Channel))
     AnswFrame = serialConnection.read(8)
